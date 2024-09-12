@@ -11,6 +11,12 @@ add_compile_options(-g -Wall -Wextra -Werror)
 
 add_executable(Trivia Game.cpp GameRunner.cpp)
 
+add_subdirectory(googletest)
+
+add_executable(test_trivia TestTrivia.cpp Game.cpp)
+add_test(test_trivia test_trivia)
+target_link_libraries(test_trivia gtest gmock gmock_main)
+
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
 include(CPack)
